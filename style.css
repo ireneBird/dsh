@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "SegoeUI";
+  src: url("./fonts/SegoeUI.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #020f1a;
+  font-family: "SegoeUI";
+}
+
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.logo {
+  margin-bottom: 80px;
+}
+
+.logo img {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.logo span {
+  font-family: "PT Serif", serif;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.wrapper {
+  max-width: 780px;
+  min-width: 340px;
+  margin: auto;
+}
+
+.pane {
+  background: #f7f9fa;
+  margin-bottom: 32px;
+  padding: 40px 100px 86px;
+}
+
+.title {
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 19px;
+  margin-bottom: 30px;
+}
+
+.list li {
+  list-style: none;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+
+.list li img {
+  padding: 0 10px;
+}
+
+footer {
+  padding-left: 100px;
+}
+
+footer p {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #9fa3a7;
+}

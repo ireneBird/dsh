@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <script type="text/javascript" src="chrome-extension://ffljdddodmkedhkcjhpmdajhjdbkogke/js/datalayer-checker.js"></script>
+
+<head>
+
+  <title>Пример использования КриптоПро ЭЦП Browser plug-in</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+  <script language="javascript" src="./js/es6-promise.min.js"></script>
+  <script language="javascript">
+    function setExtensionLoadingInfo() {
+      if (document.getElementById('ExtensionEnabledImg'))
+        document.getElementById('ExtensionEnabledImg').setAttribute("src", "./images/green_dot.svg");
+      if (document.getElementById('ExtensionEnabledTxt'))
+        document.getElementById('ExtensionEnabledTxt').innerHTML = "Расширение загружено";
+      if (document.getElementById('PluginEnabledImg'))
+        document.getElementById('PluginEnabledImg').setAttribute("src", "./images/red_dot.svg");
+      if (document.getElementById('PlugInEnabledTxt'))
+        document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин не загружен";
+      window.cadesplugin_extension_loaded = true;
+    }
+    function extensionLoadedCallback() {
+      window.onload = function (e) {
+        setExtensionLoadingInfo();
+      }
+      setExtensionLoadingInfo();
+    }
+    window.cadesplugin_extension_loaded_callback = extensionLoadedCallback;
+  </script>
+  <script language="javascript" src="./js/cadesplugin_api.js"></script>
+  <script type="text/javascript" src="chrome-extension://iifchhfnnmpdbibifmljnfjhpififfog/nmcades_plugin_api.js"></script>
+  <script type="text/javascript" src="./js/сode.js"></script>
+</head>
+
+<body>
+  <section class="wrapper">
+    <section class="pane">
+      <div class="logo">
+        <img src="./images/logo.svg" />
+        <span>СвойБизнес</span>
+      </div>
+      <main>
+        <h1 class="title">Проверка установленного ПО</h1>
+        <ul class="list">
+          <li>
+            <img src="./images/grey_dot.svg" id="ExtensionEnabledImg">
+            <span>Браузер для подписи — Google Chrome</span>
+          </li>
+          <li>
+            <img src="./images/grey_dot.svg" id="PluginEnabledImg">
+            <span>Плагин для браузера — КриптоПро Cades Plugin</span>
+          </li>
+          <li>
+            <img src="./images/grey_dot.svg" id="CspEnabledImg">
+            <span>КриптоПро CSP <span id="CSPVersionTxt" lang="ru"> </span></span>
+            
+          </li>
+        </ul>
+      </main>
+    </section>
+   
+    <footer>
+      <p>Все права защищены. Компания АО «Россельхозбанк» 2022</p>
+    </footer>
+  </section>
+</body>
+</html>
