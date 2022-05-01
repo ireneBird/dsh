@@ -680,14 +680,14 @@ function CheckForPlugIn_NPAPI() {
             CurrentPluginVersion = oAbout.Version;
 
         window.onload = function (e) {
-            document.getElementById('PluginEnabledImg').setAttribute("src", "Img/green_dot.png");
+            document.getElementById('PluginEnabledImg').setAttribute("src", "./images/green_dot.svg");
             document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен";
-            document.getElementById('CspEnabledImg').setAttribute("src", "Img/yellow_dot.png");
+            document.getElementById('CspEnabledImg').setAttribute("src", "./images/red_dot.svg");
             document.getElementById('CspEnabledTxt').innerHTML = "КриптоПро CSP не загружен";
         }
-        document.getElementById('PluginEnabledImg').setAttribute("src", "Img/green_dot.png");
+        document.getElementById('PluginEnabledImg').setAttribute("src", "./images/green_dot.svg");
         document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен";
-        document.getElementById('CspEnabledImg').setAttribute("src", "Img/yellow_dot.png");
+        document.getElementById('CspEnabledImg').setAttribute("src", "./images/red_dot.svg");
         document.getElementById('CspEnabledTxt').innerHTML = "КриптоПро CSP не загружен";
         document.getElementById('PlugInVersionTxt').innerHTML = "Версия плагина: " + MakeVersionString(CurrentPluginVersion);
         ShowCSPVersion_NPAPI(CurrentPluginVersion);
