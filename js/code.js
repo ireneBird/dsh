@@ -639,23 +639,23 @@ function CheckForPlugIn_NPAPI() {
                     PluginBaseVersion = xmlhttp.responseText;
                     if (isPluginWorked) { // плагин работает, объекты создаются
                         if (VersionCompare_NPAPI(PluginBaseVersion, CurrentPluginVersion)<0) {
-                            document.getElementById('PluginEnabledImg').setAttribute("src", "Img/yellow_dot.png");
+                            document.getElementById('PluginEnabledImg').setAttribute("src", "./images/yellow_dot.svg");
                             document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен, но есть более свежая версия";
                         }
                     }
                     else { // плагин не работает, объекты не создаются
                         if (isPluginLoaded) { // плагин загружен
                             if (!isPluginEnabled) { // плагин загружен, но отключен
-                                document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.png");
+                                document.getElementById('PluginEnabledImg').setAttribute("src", "./images/red_dot.svg");
                                 document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен, но отключен в настройках браузера";
                             }
                             else { // плагин загружен и включен, но объекты не создаются
-                                document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.png");
+                                document.getElementById('PluginEnabledImg').setAttribute("src", "./images/red_dot.svg");
                                 document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен, но не удается создать объекты. Проверьте настройки браузера";
                             }
                         }
                         else { // плагин не загружен
-                            document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.png");
+                            document.getElementById('PluginEnabledImg').setAttribute("src", "./images/red_dot.svg");
                             document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин не загружен";
                         }
                     }
@@ -1247,7 +1247,7 @@ function isEdge() {
 }
 
 function ShowEdgeNotSupported() {
-    document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.png");
+    document.getElementById('PluginEnabledImg').setAttribute("src", "./images/red_dot.png");
     document.getElementById('PlugInEnabledTxt').innerHTML = "К сожалению, браузер Edge не поддерживается!";
 }
 
