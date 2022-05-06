@@ -81,17 +81,16 @@ footer p {
   color: #9fa3a7;
 }
 
-div.reload_link {
-  margin: 0;
-  padding: 0;
+.reloadButton {
   color: #40A642;
-  font-family: "SegoeUI";
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 16px;
 }
 
-div.reload_link:hover {
-  margin: 0;
-  padding: 0;
+.reloadButton:hover {
   color: #328134;
-  font-family: "SegoeUI";
   text-decoration: underline ;
 }

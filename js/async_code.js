@@ -100,7 +100,7 @@ function CheckForPlugIn_Async() {
             try
             {
                 var sCSPName = yield oAbout.CSPName(80);
-                document.getElementById('CspEnabledImg').setAttribute("src", "Img/green_dot.svg");
+                document.getElementById('CspEnabledImg').setAttribute("src", "Img/done_green.svg");
                 document.getElementById('CspEnabledTxt').innerHTML = "Криптопровайдер загружен";
                 document.getElementById('CSPNameTxt').innerHTML = "Криптопровайдер: " + sCSPName;
             }
@@ -126,12 +126,12 @@ function CheckForPlugIn_Async() {
 
 
     window.onload = function (e) {
-        document.getElementById('PluginEnabledImg').setAttribute("src", "Img/green_dot.svg");
+        document.getElementById('PluginEnabledImg').setAttribute("src", "Img/done_green.svg");
         document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен";
         document.getElementById('CspEnabledImg').setAttribute("src", "Img/yellow_dot.svg");
         document.getElementById('CspEnabledTxt').innerHTML = "КриптоПро CSP не загружен";
     }
-    document.getElementById('PluginEnabledImg').setAttribute("src", "Img/green_dot.svg");
+    document.getElementById('PluginEnabledImg').setAttribute("src", "Img/done_green.svg");
     document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен";
     document.getElementById('CspEnabledImg').setAttribute("src", "Img/yellow_dot.svg");
     document.getElementById('CspEnabledTxt').innerHTML = "КриптоПро CSP не загружен";
@@ -1087,7 +1087,7 @@ function CheckForPlugInUEC_Async()
         }
         else
         {
-            document.getElementById('PluginEnabledImg').setAttribute("src", "Img/green_dot.svg");
+            document.getElementById('PluginEnabledImg').setAttribute("src", "Img/done_green.svg");
             document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен";
 
             try

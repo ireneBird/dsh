@@ -598,10 +598,10 @@ function CheckForPlugIn_NPAPI() {
         }
         var ver = oAbout.CSPVersion("", 80);
         window.onload = function (e) {
-            document.getElementById('CspEnabledImg').setAttribute("src", "Img/green_dot.png");
+            document.getElementById('CspEnabledImg').setAttribute("src", "Img/done_green.svg");
             document.getElementById('CspEnabledTxt').innerHTML = "Криптопровайдер загружен";
         }
-        document.getElementById('CspEnabledImg').setAttribute("src", "Img/green_dot.png");
+        document.getElementById('CspEnabledImg').setAttribute("src", "Img/done_green.svg");
         document.getElementById('CspEnabledTxt').innerHTML = "Криптопровайдер загружен";
         return ver.MajorVersion + "." + ver.MinorVersion + "." + ver.BuildVersion;
     }
@@ -680,12 +680,12 @@ function CheckForPlugIn_NPAPI() {
             CurrentPluginVersion = oAbout.Version;
 
         window.onload = function (e) {
-            document.getElementById('PluginEnabledImg').setAttribute("src", "Img/green_dot.png");
+            document.getElementById('PluginEnabledImg').setAttribute("src", "Img/done_green.svg");
             document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен";
             document.getElementById('CspEnabledImg').setAttribute("src", "Img/yellow_dot.png");
             document.getElementById('CspEnabledTxt').innerHTML = "КриптоПро CSP не загружен";
         }
-        document.getElementById('PluginEnabledImg').setAttribute("src", "Img/green_dot.png");
+        document.getElementById('PluginEnabledImg').setAttribute("src", "Img/done_green.svg");
         document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен";
         document.getElementById('CspEnabledImg').setAttribute("src", "Img/yellow_dot.png");
         document.getElementById('CspEnabledTxt').innerHTML = "КриптоПро CSP не загружен";

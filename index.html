@@ -1,186 +1,171 @@
-
 <html>
-    <head>
-        <title>Проверка установленного ПО</title>
-        <link rel="icon" type="image/x-icon" href="Img/logo.svg">
-        <meta name="robots" content="noindex, nofollow" charset="utf-8" />
-        <link href="style.css" rel="stylesheet" type="text/css" />
+
+<head>
+  <title>Проверка установленного ПО</title>
+  <link rel="icon" type="image/x-icon" href="Img/logo.svg">
+  <meta name="robots" content="noindex, nofollow" charset="utf-8" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script language="javascript" src="js/es6-promise.min.js"></script>
+  <script language="javascript" src="js/ie_eventlistner_polyfill.js"></script>
+  <script language="javascript">
+    function setExtensionLoadingInfo() {
+      if (document.getElementById('ExtensionEnabledImg'))
+        document.getElementById('ExtensionEnabledImg').setAttribute("src", "Img/done_green.svg");
+      if (document.getElementById('ExtensionEnabledTxt'))
+        document.getElementById('ExtensionEnabledTxt').innerHTML = "Расширение загружено";
+      if (document.getElementById('PluginEnabledImg'))
+        document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.svg");
+      if (document.getElementById('PlugInEnabledTxt'))
+        document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин не загружен";
+      window.cadesplugin_extension_loaded = true;
+    }
+    function extensionLoadedCallback() {
+      window.onload = function (e) {
+        setExtensionLoadingInfo();
+      }
+      setExtensionLoadingInfo();
+    }
+    window.cadesplugin_extension_loaded_callback = extensionLoadedCallback;
+  </script>
+  <script language="javascript" src="js/cadesplugin_api.js"></script>
+  <script language="javascript" src="js/Code.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+
+  <script language="javascript">
+    function local_reload() {
+      location.reload();
+      return false;
+    }
+  </script>
+
+</head>
+
+<body>
+  <section class="wrapper">
+    <section class="pane">
+      <div class="logo">
+        <img src="./Img/logo.svg" />
+        <span>СвойБизнес</span>
+      </div>
+      <main>
+        <h1 class="title">Проверка установленного ПО</h1>
+        <ul class="list">
+          <li>
+            <img src="Img/red_dot.svg" alt="Расширение не загружено" id="ExtensionEnabledImg" />
+            <span id="ExtensionEnabledTxt">Расширение не загружено</span>
+          </li>
+          <li>
+            <img src="Img/grey_dot.svg" alt="Плагин не загружен" id="PluginEnabledImg" />
+            <span id="PlugInEnabledTxt">Плагин: ожидание загрузки расширения</span> <span id="PlugInVersionTxt"
+              lang="ru"> </span>
+          </li>
+          <li>
+            <img src="Img/grey_dot.svg" alt="КриптоПро CSP не загружен" id="CspEnabledImg" />
+            <span id="CspEnabledTxt">Криптопровайдер: ожидание загрузки плагина</span> <span id="CSPVersionTxt"
+              lang="ru"> </span>
+          </li>
+        </ul>
+        <br>
+        <button class="reloadButton" onclick=local_reload()>Проверить ещё раз</button>
+
+        <div style="display:none"><span id="CSPNameTxt" lang="ru"> </span></div>
 
 
-        <script language="javascript" src="js/es6-promise.min.js"></script>
-        <script language="javascript" src="js/ie_eventlistner_polyfill.js"></script>
+      </main>
+    </section>
+
+    <footer>
+      <p>Все права защищены. Компания АО «Россельхозбанк» 2022</p>
+    </footer>
+
+    <div style="display:none">
+      <p id="info_msg" name="CertificateTitle">Выберите cертификат:</p>
+      <div id="item_border" name="CertListBoxToHide">
+        <select size="8" name="CertListBox" id="CertListBox" style="width:100%;resize:none;border:0;"></select>
+      </div>
+
+      <p id="info_msg" name="DataToSign">Данные для подписи:</p>
+      <div id="item_border" name="DataToSignItemBorder">
+        <textarea id="DataToSignTxtBox" name="DataToSignTxtBox" style="height:20px;width:100%;resize:none;border:0;">
+                </textarea>
+      </div>
+      <p></p>
+      <div class="layout">
+        <input id="SignBtn" type="button" value="Подписать" name="SignData"
+          onclick="Common_SignCadesBES('CertListBox');" />
+      </div>
+
+      <div id="cert_info" name="CertInfo" style="display:none">
+        <h2>Информация о сертификате</h2>
+        <p class="info_field" id="subject"></p>
+        <p class="info_field" id="issuer"></p>
+        <p class="info_field" id="from"></p>
+        <p class="info_field" id="till"></p>
+        <p class="info_field" id="provname"></p>
+        <p class="info_field" id="privateKeyLink"></p>
+        <p class="info_field" id="algorithm"></p>
+        <p class="info_field" id="status"></p>
+        <p class="info_field" id="location"></p>
+      </div>
+
+      <p id="info_msg" name="SignatureTitle">Подпись:</p>
+      <div id="item_border" name="SignatureTitleItemBorder">
+        <textarea id="SignatureTxtBox" readonly style="font-size:9pt;height:600px;width:100%;resize:none;border:0;">
+                </textarea>
         <script language="javascript">
-            function setExtensionLoadingInfo() {
-                if (document.getElementById('ExtensionEnabledImg'))
-                    document.getElementById('ExtensionEnabledImg').setAttribute("src", "Img/green_dot.svg");
-                if (document.getElementById('ExtensionEnabledTxt'))
-                    document.getElementById('ExtensionEnabledTxt').innerHTML = "Расширение загружено";
-                if (document.getElementById('PluginEnabledImg'))
+          var txtDataToSign = "Hello World";
+          document.getElementById("DataToSignTxtBox").innerHTML = txtDataToSign;
+          document.getElementById("SignatureTxtBox").innerHTML = "";
+          var canPromise = !!window.Promise;
+          if (isEdge()) {
+            ShowEdgeNotSupported();
+          } else {
+            if (canPromise) {
+              cadesplugin.then(function () {
+                Common_CheckForPlugIn();
+              },
+                function (error) {
+                  if (window.cadesplugin_extension_loaded) {
                     document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.svg");
-                if (document.getElementById('PlugInEnabledTxt'))
-                    document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин не загружен";
-                window.cadesplugin_extension_loaded = true;
-            }
-            function extensionLoadedCallback() {
-                window.onload = function (e) {
-                    setExtensionLoadingInfo();
+                    document.getElementById('PlugInEnabledTxt').innerHTML = error;
+                  }
                 }
-                setExtensionLoadingInfo();
+              );
+            } else {
+              window.addEventListener("message", function (event) {
+                if (event.data == "cadesplugin_loaded") {
+                  CheckForPlugIn_NPAPI();
+                } else if (event.data == "cadesplugin_load_error") {
+                  if (window.cadesplugin_extension_loaded) {
+                    document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.svg");
+                    document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин не загружен";
+                  }
+                }
+              },
+                false);
+              window.postMessage("cadesplugin_echo_request", "*");
             }
-            window.cadesplugin_extension_loaded_callback = extensionLoadedCallback;
+          }
         </script>
-        <script language="javascript" src="js/cadesplugin_api.js"></script>
-        <script language="javascript" src="js/Code.js"></script>
+      </div>
+  </section>
+</body>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap" rel="stylesheet">
-        
-        <script language="javascript">
-            function local_reload() {
-                location.reload();
-                return false;
-            }
-        </script>
+<!--<script language="javascript" src="js/highlight.js"></script>-->
+<script language="javascript">
+  if (isIE()) {
+    if (document.getElementById('ExtensionEnabledImg'))
+      document.getElementById('ExtensionEnabledImg').setAttribute("src", "Img/done_green.svg");
+    if (document.getElementById('ExtensionEnabledTxt'))
+      document.getElementById('ExtensionEnabledTxt').innerHTML = "Расширение не требуется";
+    if (document.getElementById('PluginEnabledImg'))
+      document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.svg");
+    if (document.getElementById('PlugInEnabledTxt'))
+      document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин не загружен";
+  }
+</script>
 
-    </head>
-    <body>
-        <section class="wrapper">
-            <section class="pane">
-              <div class="logo">
-                <img src="./Img/logo.svg" />
-                <span>СвойБизнес</span>
-              </div>
-              <main>
-                <h1 class="title">Проверка установленного ПО</h1>
-                <ul class="list">
-                    <li>
-                        <img src="Img/red_dot.svg" width="10" height="10" alt="Расширение не загружено" id="ExtensionEnabledImg" />
-                        <span id="ExtensionEnabledTxt">Расширение не загружено</span>
-                    </li>
-                    <li>
-                        <img src="Img/grey_dot.svg" width="10" height="10" alt="Плагин не загружен" id="PluginEnabledImg" />
-                        <span id="PlugInEnabledTxt">Плагин: ожидание загрузки расширения</span>  <span id="PlugInVersionTxt" lang="ru"> </span>
-                    </li>
-                    <li>
-                        <img src="Img/grey_dot.svg" width="10" height="10" alt="КриптоПро CSP не загружен" id="CspEnabledImg" />
-                        <span id="CspEnabledTxt">Криптопровайдер: ожидание загрузки плагина</span> <span id="CSPVersionTxt" lang="ru"> </span>
-                    </li>
-                </ul>
-                <br>
-                <div class="reload_link" onclick=local_reload()>Проверить ещё раз</div>
-
-                <div style="display:none"><span id="CSPNameTxt" lang="ru"> </span></div>
-                    
-
-            </main>
-          </section>
-          
-          <footer>
-            <p>Все права защищены. Компания АО «Россельхозбанк» 2022</p>
-          </footer>
-                                        
-        <!--<span id="ExtensionEnabledTxt">Расширение не загружено</span>
-        <img src="Img/red_dot.svg" width="10" height="10" alt="Расширение не загружено" id="ExtensionEnabledImg" />
-        <br>
-        <span id="PlugInEnabledTxt">Плагин: ожидание загрузки расширения</span>
-        <img src="Img/grey_dot.svg" width="10" height="10" alt="Плагин не загружен" id="PluginEnabledImg" />
-        <br>
-        <span id="CspEnabledTxt">Криптопровайдер: ожидание загрузки плагина</span>
-        <img src="Img/grey_dot.svg" width="10" height="10" alt="КриптоПро CSP не загружен" id="CspEnabledImg" />
-        <br>
-
-        <span id="PlugInVersionTxt" lang="ru"> </span>
-        <span id="CSPVersionTxt" lang="ru"> </span>
-        <br>
-        <span id="CSPNameTxt" lang="ru"> </span> -->
-        <!-- -------------------------------- -->
-
-        <div style="display:none">
-            <p id="info_msg" name="CertificateTitle">Выберите cертификат:</p>
-            <div id="item_border" name="CertListBoxToHide">
-                <select size="8" name="CertListBox" id="CertListBox" style="width:100%;resize:none;border:0;"></select>
-            </div>
-
-            <p id="info_msg" name="DataToSign">Данные для подписи:</p>
-            <div id="item_border" name="DataToSignItemBorder">
-                <textarea id="DataToSignTxtBox" name="DataToSignTxtBox" style="height:20px;width:100%;resize:none;border:0;">
-                </textarea>
-            </div>
-            <p></p>
-            <div class="layout">
-                <input id="SignBtn" type="button" value="Подписать" name="SignData" onclick="Common_SignCadesBES('CertListBox');" />
-            </div>
-
-            <div id="cert_info" name="CertInfo" style="display:none">
-                <h2>Информация о сертификате</h2>
-                <p class="info_field" id="subject"></p>
-                <p class="info_field" id="issuer"></p>
-                <p class="info_field" id="from"></p>
-                <p class="info_field" id="till"></p>
-                <p class="info_field" id="provname"></p>
-                <p class="info_field" id="privateKeyLink"></p>
-                <p class="info_field" id="algorithm"></p>
-                <p class="info_field" id="status"></p>
-                <p class="info_field" id="location"></p>
-            </div>
-
-            <p id="info_msg" name="SignatureTitle">Подпись:</p>
-            <div id="item_border" name="SignatureTitleItemBorder">
-                <textarea id="SignatureTxtBox" readonly style="font-size:9pt;height:600px;width:100%;resize:none;border:0;">
-                </textarea>
-                <script language="javascript">
-                    var txtDataToSign = "Hello World";
-                    document.getElementById("DataToSignTxtBox").innerHTML = txtDataToSign;
-                    document.getElementById("SignatureTxtBox").innerHTML = "";
-                    var canPromise = !!window.Promise;
-                    if (isEdge()) {
-                        ShowEdgeNotSupported();
-                    } else {
-                        if (canPromise) {
-                            cadesplugin.then(function () {
-                                Common_CheckForPlugIn();
-                            },
-                                function (error) {
-                                    if (window.cadesplugin_extension_loaded) {
-                                        document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.svg");
-                                        document.getElementById('PlugInEnabledTxt').innerHTML = error;
-                                    }
-                                }
-                            );
-                        } else {
-                            window.addEventListener("message", function (event) {
-                                if (event.data == "cadesplugin_loaded") {
-                                    CheckForPlugIn_NPAPI();
-                                } else if (event.data == "cadesplugin_load_error") {
-                                    if (window.cadesplugin_extension_loaded) {
-                                        document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.svg");
-                                        document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин не загружен";
-                                    }
-                                }
-                            },
-                                false);
-                            window.postMessage("cadesplugin_echo_request", "*");
-                        }
-                    }
-                </script>
-        </div>
-        <!-- -------------------------------- -->
-        </section>
-    </body>
-    
-    <!--<script language="javascript" src="js/highlight.js"></script>-->
-    <script language="javascript">
-        if (isIE()) {
-            if (document.getElementById('ExtensionEnabledImg'))
-                document.getElementById('ExtensionEnabledImg').setAttribute("src", "Img/green_dot.svg");
-            if (document.getElementById('ExtensionEnabledTxt'))
-                document.getElementById('ExtensionEnabledTxt').innerHTML = "Расширение не требуется";
-            if (document.getElementById('PluginEnabledImg'))
-                document.getElementById('PluginEnabledImg').setAttribute("src", "Img/red_dot.svg");
-            if (document.getElementById('PlugInEnabledTxt'))
-                document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин не загружен";
-        }
-    </script>
-    </html>
-    
+</html>
