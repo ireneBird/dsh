@@ -210,7 +210,7 @@ function FillCertInfo_NPAPI(certificate, certBoxId, isFromContainer)
     try {
         IsValid = certificate.IsValid().Result;    
     } catch (e) {
-
+        
     }
     var hasPrivateKey = certificate.HasPrivateKey();
     var Now = new Date();
@@ -396,13 +396,13 @@ function MakeXMLSign_NPAPI(dataToSign, certObject, signatureType) {
         errormes = "Данная демо страница поддерживает XML подпись сертификатами с алгоритмом ГОСТ Р 34.10-2012, ГОСТ Р 34.10-2001";
         throw errormes;
     }
-
+    
     var CADESCOM_XML_SIGNATURE_TYPE_ENVELOPED = 0|signatureType;
     if (signatureType > cadesplugin.CADESCOM_XADES_BES) {
         var tspService = document.getElementById("TSPServiceTxtBox").value;
         oSigner.TSAAddress = tspService;
     }
-
+    
     try {
         var oSignedXML = cadesplugin.CreateObject("CAdESCOM.SignedXML");
     } catch (err) {
@@ -1034,7 +1034,7 @@ function CreateCertRequest_NPAPI()
         alert('Failed to generate KeyPair or reguest: ' + cadesplugin.getLastError(e));
         return;    
     }
-
+    
     return cert_req;
 }
 
