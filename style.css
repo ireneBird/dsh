@@ -80,3 +80,18 @@ footer p {
   letter-spacing: 0.02em;
   color: #9fa3a7;
 }
+
+div.reload_link {
+  margin: 0;
+  padding: 0;
+  color: #40A642;
+  font-family: "SegoeUI";
+}
+
+div.reload_link:hover {
+  margin: 0;
+  padding: 0;
+  color: #328134;
+  font-family: "SegoeUI";
+  text-decoration: underline ;
+}
