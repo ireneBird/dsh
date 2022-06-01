@@ -689,7 +689,7 @@ function CheckForPlugIn_NPAPI() {
         document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен";
         document.getElementById('CspEnabledImg').setAttribute("src", "Img/yellow_dot.png");
         document.getElementById('CspEnabledTxt').innerHTML = "КриптоПро CSP не загружен";
-        document.getElementById('PlugInVersionTxt').innerHTML = "Версия плагина: " + MakeVersionString(CurrentPluginVersion);
+        document.getElementById('PlugInVersionTxt').innerHTML = "Плагин для браузера — " + MakeVersionString(CurrentPluginVersion);
         ShowCSPVersion_NPAPI(CurrentPluginVersion);
     }
     catch (err) {

@@ -1107,7 +1107,7 @@ function CheckForPlugInUEC_Async()
                 document.getElementById('PlugInEnabledTxt').innerHTML = "Плагин загружен. Не установлен УЭК CSP.";
             }
         }
-        document.getElementById('PlugInVersionTxt').innerHTML = "Версия плагина: " + (yield CurrentPluginVersion.toString());
+        document.getElementById('PlugInVersionTxt').innerHTML = "Плагин для браузера —  " + (yield CurrentPluginVersion.toString());
         document.getElementById('CSPVersionTxt').innerHTML = "Версия УЭК CSP: " + (yield UECCSPVersion.toString());
     }); //cadesplugin.async_spawn
 }
