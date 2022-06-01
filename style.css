@@ -177,9 +177,11 @@ footer p {
 }
 
 .collapseBody p span {
-  background: #9ed0ff;
+  background: #1e4587;
   color: #fff;
-  padding: 0 4px;
+  padding: 1px 7px;
+  font-weight: 700;
+  border-radius: 5px;
 }
 .collapseBody p a {
   color: #178fff;
