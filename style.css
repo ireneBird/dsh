@@ -148,7 +148,7 @@ footer p {
   align-items: center;
 }
 
-.accordion:focus-visible{
+.accordion:focus-visible {
   outline: none;
 }
 
@@ -176,13 +176,30 @@ footer p {
   margin-bottom: 15px;
 }
 
-.collapseBody p span {
-  background: #1e4587;
+.blueLabel {
+  background: #1e4588;
+  padding: 2px 18px;
+  border: 2px solid #ffffff;
+  border-radius: 18px;
   color: #fff;
-  padding: 1px 7px;
+  box-shadow: 1px 3px 6px #00000066;
   font-weight: 700;
-  border-radius: 5px;
+  font-size: 12px;
 }
+
+.blueLinkLabel {
+  color: #187bb1;
+  text-decoration: underline;
+}
+
+.redLabel {
+  color: #fff;
+  background-color: #ea5a22;
+  padding: 4px 13px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
 .collapseBody p a {
   color: #178fff;
 }
