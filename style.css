@@ -6,10 +6,14 @@
 }
 
 * {
+  font-stretch: ultra-condensed;
   margin: 0;
   padding: 0;
   color: #020f1a;
   font-family: "SegoeUI";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 *,
@@ -58,12 +62,19 @@ p {
   margin-bottom: 30px;
 }
 
+.list {
+  margin-bottom: 45px;
+}
+
 .list li {
   list-style: none;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.02em;
-  margin-bottom: 12px;
+}
+
+.list li:not(:last-child) {
+  margin-bottom: 30px;
 }
 
 .list li img {
@@ -82,7 +93,7 @@ footer p {
 }
 
 .reloadButton {
-  color: #40A642;
+  color: #40a642;
   background: none;
   border: none;
   cursor: pointer;
@@ -92,5 +103,100 @@ footer p {
 
 .reloadButton:hover {
   color: #328134;
-  text-decoration: underline ;
+  text-decoration: underline;
+}
+
+.blue {
+  color: #178fff;
+}
+
+.reloadButton.blue:hover {
+  color: #65b2fa;
+}
+
+.textDesc {
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.collapseItem {
+  padding-left: 26px;
+  position: relative;
+}
+.collapseItem:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.collapseItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: url("./Img/grey_dot.svg");
+}
+
+.accordion {
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  background: none;
+  display: flex;
+  border: none;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion:focus-visible{
+  outline: none;
+}
+
+.accordion.isOpen {
+  transition: margin 0.2s ease-in-out;
+}
+
+.accordion.isOpen img {
+  transform: rotate(180deg);
+}
+
+.collapseBody {
+  margin-top: 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+}
+
+.collapseBody img {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.collapseBody p {
+  margin-bottom: 15px;
+}
+
+.collapseBody p span {
+  background: #9ed0ff;
+  color: #fff;
+  padding: 0 4px;
+}
+.collapseBody p a {
+  color: #178fff;
+}
+
+.collapseBody h3 {
+  margin-bottom: 20px;
+}
+
+.collapseBody h4 {
+  margin-bottom: 15px;
+}
+.link {
+  color: #178fff;
+  text-decoration: none;
+}
+
+.link.blue:hover {
+  color: #65b2fa;
 }
